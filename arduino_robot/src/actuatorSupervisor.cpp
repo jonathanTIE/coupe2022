@@ -5,7 +5,6 @@
 #include "Wire.h"
 #include "Adafruit_PWMServoDriver.h"
 #include "Adafruit_TCS34725.h"
-#include "ai/MatchDirector.h"
 
 namespace ActuatorSupervisor
 {
@@ -69,7 +68,6 @@ namespace ActuatorSupervisor
     {
         if(pavillon_deployed == false)
         {
-            MatchDirector::addScore(10);
             otherServos[0].moveServo(SERVO_PAV_ANGLE_DPLOYED);
             pavillon_deployed = true;
         }

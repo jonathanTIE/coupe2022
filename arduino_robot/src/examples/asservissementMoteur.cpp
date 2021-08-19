@@ -1,6 +1,5 @@
 #include "asservissementMoteur.h"
 #include "../motorControl.h"
-#include "../navigator.h"
 
 #include "Metro.h"
 #include "../params.h"
@@ -14,7 +13,7 @@ namespace asservissementMoteur {
     {
         SerialDebug.println(i);
         i = (i==4) ? 0 : i+1;
-            navigator.move(0, cons_test[i]);
+            // navigator.move(0, cons_test[i]);
             //MotorControl::set_cons(cons_test[i], 0);
 
     }

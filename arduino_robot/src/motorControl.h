@@ -5,6 +5,11 @@
  *      Author: elie
  */
 
+/*
+	TODO : Ajouter un timeout (de 200ms) quand une consigne n'a pas été recue, de s'arreter (au cas où nav2 ou la raspberry tombe en panne)
+	Ajouter des speed/omega max par sécurité
+*/
+
 #ifndef MOTORCONTROL_H_
 #define MOTORCONTROL_H_
 

@@ -67,18 +67,3 @@ extern Odometry odometry_motor;
 extern Odometry odometry_wheel;
 
 #endif /* ODOMETRY_H_ */
-
-/*
-
-1419
-18:50:27.597 -> 1405
-
-18:51:01.226 -> 1428
-18:51:01.226 -> 1454
-
-
-18:51:39.930 -> 1413
-18:51:39.930 -> 1463
-
-
-*/
