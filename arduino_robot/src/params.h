@@ -39,6 +39,9 @@ const unsigned long TIME_RACE = 100000;
 
 #pragma region pins physiques
 
+/*
+set encoder pin value to 0 if not used in the program
+*/
 const int MOT_ENCODEUR1_A = 21;
 const int MOT_ENCODEUR1_B = 20;
 const int MOT_ENCODEUR2_A = 23;
@@ -55,30 +58,12 @@ const int MOT1_DIR = 34;//33;
 const int MOT2_PWM = 36;//35;
 const int MOT2_DIR = 33;//34;
 
-//const int BATT_CHARGE = 37;
 
-const int SERVO_PAV = 37;
-const int SERVO_BAR = 38;
 
 const int DISPALY_CLK = 8;
 const int DISPLAY_DATA = 7;
 
-//PCA 9685PW - not pin from teensy !
-const int EV5 = 14; //EV = ElectroVanne
-const int EV4 = 13;
-const int EV3 = 12;
-const int EV2 = 11;
-const int EV1 = 10;
-const int POMPE5 = 9;
-const int POMPE4 = 8;
-const int POMPE3 = 7;
-const int POMPE2 = 6;
-const int POMPE1 = 5;
-const int SERVO5 = 4;
-const int SERVO4 = 3;
-const int SERVO3 = 2;
-const int SERVO2 = 1;
-const int SERVO1 = 0;
+
 
 //Pins from I2C multiplexer, not from teensy :
 const int COLOR_SENSOR_1 = 0;//TODO
@@ -149,27 +134,9 @@ const unsigned long SERVO_MOVEMENT_DURATION = 1000;
 const unsigned long DETECTION_STOP_TIME = 1500;
 
 
-enum sensors {IR1=33,IR2,IR3,IR4,IR5,IR6,IR_test};
-const sensors IR_sel=IR_test;
 
-
-//params de capture ecocup
-const float dist_min=5,dist_max=20;//valeurs initial turn
-const float delta_step_forward=20;//mm
-const float nominal_delta_rot=10;//degres
-const float dist_opt=4.5;
-
-//ARMS : 
-const int SERVO_ANGLE_RETRACTED = 150;
-const int SERVO_ANGLE_DEPLOYED = 60;
 
 //servos : 
 const int SERVO_PAV_ANGLE_RTRCTED = 90;
-const int SERVO_PAV_ANGLE_DPLOYED = 170;
 
-const int SERVO_BAR_ANGLE_RTRCTED = 0;
-const int SERVO_BAR_ANGLE_DPLOYED = 180;
-
-
-// const int NB_US = 4;
 #endif /* PARAMS_H_ */

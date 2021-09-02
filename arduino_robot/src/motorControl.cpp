@@ -6,7 +6,7 @@
  */
 
 
-#include "odometry.h"
+
 #include "Arduino.h"
 #include "params.h"
 #include "motorControl.h"
@@ -16,46 +16,16 @@
 // 	return min(sup, max(inf, x));
 // }
 
-int direction_sign(int nb) {
-	if(nb>0) {
-		return 0;
-	}
-	else {
-		return 1;
-	}
-}
+
 
 namespace MotorControl {
 
-	float cons_speed=0;
-	float cons_omega=0;
-	
-	float Ki_speed = 0.15; //0.2
-	float Kp_speed = 0.4; //0.5
-	float Kd_speed = 0.05; //0.2
-	float Ki_omega = 10;//15;
-	float Kp_omega = 40;//10;
-	float Kd_omega = 10;//10;
 
-/*
-	float Ki_speed = 0.2;//0.2;
-	float Kp_speed = 0.5;//0.5;
-	float Kd_speed = 0;
-	float Ki_omega = 10;//15  20;
-	float Kp_omega = 10;//75  30;
-	float Kd_omega = 0;
-	*/
-	float error_integrale_speed=0.01;
-	float error_integrale_omega=0;
 
-	float delta_speed=0;
-	float delta_omega=0;
-	float prev_speed_error=0;
-	float prev_omega_error=0;
 
 	void set_cons(float speed, float omega) {
-		cons_speed = speed;
-		cons_omega = omega;
+		this->cons_speed = speed;
+		this->cons_omega = omega;
 	}
 
 	float get_cons_speed(){
