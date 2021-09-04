@@ -20,7 +20,7 @@
 class MotorControl {
 	public:
 
-		MotorControl(Odometry odometry);
+		MotorControl(Odometry* odometry);
 		~MotorControl();
 		void update();
 		void init();
@@ -44,6 +44,8 @@ class MotorControl {
 		float Ki_omega = 10;//15;
 		float Kp_omega = 40;//10;
 		float Kd_omega = 10;//10;
+
+		Odometry* odometry_motor;
 		
 		float error_integrale_speed=0.01;
 		float error_integrale_omega=0;

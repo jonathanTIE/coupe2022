@@ -1,8 +1,8 @@
-#include "Wire.h"
+//#include "Wire.h"
 #include "debugTest.h"
 #include "params.h"
 
-
+/*
 namespace debugTest {
 
     void scanSerial()
@@ -45,3 +45,4 @@ namespace debugTest {
         }
 }
 
+*/

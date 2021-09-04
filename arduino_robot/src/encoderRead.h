@@ -5,34 +5,37 @@
 
 #include "params.h"
 #include "Encoder.h"
+//TODO : replace encoder with a custom hardware library, (either STM or teensy)
 
 /**
  * @brief store the mm traveled by a wheel (either coder or motor, as long as there is an encoder)
  * 
  * @warning there are usually problem with using interruption (like with encoder) in a class, so keep it hardcoded that way (in a namespace)
+ * @warning only documentation made, code doesn't work yet, will depend on the implementation (STM, teensy,...)
  */
 
+#pragma once
+//
+class EncoderRead {
+    public:
+        /**
+         * @brief Construct a new Encoder Read object
+         * 
+         * @param encoder TODO/WARNING - change Encoder with a custom hardware library with same signature, and init it before instantiating encoderread(or maybe use an init here which will init the encoder ?)
+         */
+        EncoderRead(Encoder* encoder, const float incr_to_mm);
+        ~EncoderRead();
+        void update();
 
-/*To add other encoders :
-Encoder NAME(PIN1, PIN2);
-float NAME_dist;
-float NAME_speed;
-*/
+        float get_dist();
+        float get_speed();
 
-namespace EncoderRead{
-    Encoder motor1_coder(MOT_ENCODEUR1_A, MOT_ENCODEUR1_B);
+    private:
+        Encoder* encoder;
+        float incr_to_mm;
 
-    float motor1_dist; //distance traveled
-    float motor1_speed;
+        float dist; //distance traveled
+        float speed; //TODO : pour l'instant on garde en speed le dernier reading, peut-être faire une moyenne et avoir une variable last_incr ? (à voir avec odometry comment modif ça)
 
-    void update()
-    {
-        if(MOT_ENCODEUR1_A != 0)
-        {
-            int32_t reading = motor1_coder.read() * INCR_TO_MM_1;
-            motor1_dist += reading;
-            motor1_speed = reading; //could be modified to average values from previous readings
-            motor1_coder.write(0);
-        }
-    }
-}
+
+};

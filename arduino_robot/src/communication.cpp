@@ -4,7 +4,7 @@
 #include "motorControl.h"
 #include "odometry.h"
 #include "params.h"
-#include "actuatorSupervisor.h"
+//#include "actuatorSupervisor.h"
 
 
 #define COM_DEBUG
@@ -48,7 +48,6 @@ namespace Communication {
 
     static void parse_data(){
         if(buffer[0] == 's') {
-            MotorControl::set_cons(0,0);
             // navigator.forceStop();
             #ifdef COM_DEBUG
             SerialCtrl.println("Stopped!");
@@ -67,30 +66,7 @@ namespace Communication {
                 #endif
             }
         }
-        else if(buffer[0] == 'o') {
-            SerialCtrl.print("pos - odometry_motor : ");
-            SerialCtrl.print(odometry_motor.get_pos_x());
-            SerialCtrl.print("\t");
-            SerialCtrl.print(odometry_motor.get_pos_y());
-            SerialCtrl.print("\t");
-            SerialCtrl.println(odometry_motor.get_pos_theta());
-        }
-        else if(buffer[0] == '3') {
-            SerialCtrl.print("pos - odometry_wheel : ");
-            SerialCtrl.print(odometry_wheel.get_pos_x());
-            SerialCtrl.print("\t");
-            SerialCtrl.print(odometry_wheel.get_pos_y());
-            SerialCtrl.print("\t");
-            SerialCtrl.println(odometry_wheel.get_pos_theta());
-        } 
-        else if(buffer[0] == '2') {
-            SerialCtrl.print("pos - odometry_wheel ABSOLUTE : ");
-            //SerialCtrl.print(MatchDirector::get_abs_wheel_x());
-            SerialCtrl.print("\t");
-           //SerialCtrl.print(MatchDirector::get_abs_wheel_y());
-            SerialCtrl.print("\t");
-            SerialCtrl.println(odometry_wheel.get_pos_theta());
-        } 
+
         else if(buffer[0] == '1') {
             SerialCtrl.print("pos - absolue :  ");
             //SerialCtrl.print(MatchDirector::get_abs_x());
@@ -105,23 +81,8 @@ namespace Communication {
                // navigator.turn_to(angle);
             }
         }
-        else if(buffer[0] == 'l') { //deploy front servo -> from start to deposit ecocup
-           // MatchDirector::set_current_action(ActionList::EcocupsTopLeft);
-        }
-        else if(buffer[0] == 'd') { //deploy BAR
-            ActuatorSupervisor::otherServos[1].moveServo(SERVO_BAR_ANGLE_DPLOYED);
-        }
-        else if(buffer[0] == 'e') { //deploy BAR
-            ActuatorSupervisor::otherServos[1].moveServo(SERVO_BAR_ANGLE_RTRCTED);
-        }
+
         
-        
-        else if(buffer[0] == '9')
-        {
-            SerialCtrl.println(odometry_wheel.nbr1);
-            SerialCtrl.println(odometry_wheel.nbr2);
-            
-        }
         else if(buffer[0] == 'a') {
             float x,y;
             int nb = sscanf(buffer, "a %f %f", &x, &y);
